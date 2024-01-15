@@ -1,0 +1,35 @@
+// Interfaccia per definire la struttura di un Logger
+interface Logger {
+  log(message: string): void;
+}
+
+// Classe di alto livello che dipende dall'astrazione Logger
+class OrderProcessor {
+  private logger: Logger;
+
+  constructor(logger: Logger) {
+    this.logger = logger;
+  }
+
+  processOrder(order: any): void {
+    // Logica di elaborazione dell'ordine
+
+    // Utilizzo dell'interfaccia Logger invece di una implementazione specifica
+    this.logger.log(`Order processed: ${JSON.stringify(order)}`);
+  }
+}
+
+// Implementazione di un logger specifico
+class ConsoleLogger implements Logger {
+  log(message: string): void {
+    console.log(message);
+  }
+}
+
+// Utilizzo delle classi
+const consoleLogger = new ConsoleLogger();
+const orderProcessor = new OrderProcessor(consoleLogger);
+
+orderProcessor.processOrder({
+  /* dati dell'ordine */
+});

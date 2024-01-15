@@ -1,0 +1,30 @@
+// Interfaccia per gli animali che possono nuotare
+interface Swimmable {
+    public function swim();
+}
+
+// Interfaccia per gli animali che possono volare
+interface Flyable {
+    public function fly();
+}
+
+// Implementazione di un animale che può camminare
+class Dog implements Walkable {
+    public function walk() {
+        echo "Il cane sta camminando." . PHP_EOL;
+    }
+}
+
+// Implementazione di un animale che può nuotare
+class Fish implements Swimmable {
+    public function swim() {
+        echo "Il pesce sta nuotando." . PHP_EOL;
+    }
+}
+
+// Implementazione di un animale che può volare
+class Bird implements Flyable {
+    public function fly() {
+        echo "L'uccello sta volando." . PHP_EOL;
+    }
+}

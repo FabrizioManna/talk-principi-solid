@@ -1,0 +1,30 @@
+// Interfaccia originale che viola ISP
+interface Worker {
+  work(): void;
+  eat(): void;
+}
+
+// Nuove interfacce rispettando ISP
+interface Workable {
+  work(): void;
+}
+
+interface Eatable {
+  eat(): void;
+}
+
+// Classe che implementa le nuove interfacce
+class SuperWorker implements Workable, Eatable {
+  work(): void {
+    // Implementazione del lavoro
+  }
+
+  eat(): void {
+    // Implementazione del pasto
+  }
+}
+
+// Utilizzo della nuova struttura
+const superWorker = new SuperWorker();
+superWorker.work();
+superWorker.eat();

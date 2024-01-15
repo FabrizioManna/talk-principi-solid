@@ -1,0 +1,25 @@
+// Classe base che rappresenta un animale
+class Animal {
+  speak(): string {
+    return "Suono generico";
+  }
+}
+
+// Sottoclasse che rappresenta un cane
+class Dog extends Animal {
+  speak(): string {
+    return "Bau bau";
+  }
+}
+
+// Funzione che accetta un oggetto di tipo Animal
+function animalSound(animal: Animal): string {
+  return animal.speak();
+}
+
+// Utilizzo delle classi
+const genericAnimal = new Animal();
+const dog = new Dog();
+
+console.log(animalSound(genericAnimal)); // Output: Suono generico
+console.log(animalSound(dog)); // Output: Bau bau

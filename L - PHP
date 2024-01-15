@@ -1,0 +1,48 @@
+// Classe base Rectangle
+class Rectangle {
+  protected $width;
+  protected $height;
+
+  public function setWidth($width) {
+    $this->width = $width;
+  }
+
+  public function setHeight($height) {
+    $this->height = $height;
+  }
+
+  public function getArea() {
+    return $this->width * $this->height;
+  }
+}
+
+// Sottoclasse Square, che eredita da Rectangle
+class Square extends Rectangle {
+  // Poiché un quadrato ha tutti i lati uguali,
+  // possiamo semplificare la logica di setWidth e setHeight
+  public function setWidth($side) {
+    $this->width = $side;
+    $this->height = $side;
+  }
+
+  public function setHeight($side) {
+    $this->width = $side;
+    $this->height = $side;
+  }
+}
+
+// Funzione che utilizza un oggetto di tipo Rectangle
+function printArea(Rectangle $rectangle) {
+  $rectangle->setWidth(5);
+  $rectangle->setHeight(10);
+
+  echo "Area: " . $rectangle->getArea() . PHP_EOL;
+}
+
+// Utilizzo della funzione con un oggetto Rectangle
+$rectangle = new Rectangle();
+printArea($rectangle);
+
+// Utilizzo della funzione con un oggetto Square
+$square = new Square();
+printArea($square);

@@ -1,0 +1,46 @@
+// Interfaccia per definire la struttura di un sender di notifiche
+interface NotificationSender {
+    public function sendNotification(string $message): void;
+}
+
+// Implementazione specifica per l'invio di notifiche via e-mail
+class EmailNotificationSender implements NotificationSender {
+    public function sendNotification(string $message): void {
+        // Logica specifica per l'invio di notifiche via e-mail
+        echo "Invia notifica via e-mail: $message\n";
+    }
+}
+
+// Implementazione specifica per l'invio di notifiche via SMS
+class SMSNotificationSender implements NotificationSender {
+    public function sendNotification(string $message): void {
+        // Logica specifica per l'invio di notifiche via SMS
+        echo "Invia notifica via SMS: $message\n";
+    }
+}
+
+// Classe di alto livello che dipende dall'astrazione NotificationSender
+class NotificationService {
+    private $notificationSender;
+
+    public function __construct(NotificationSender $notificationSender) {
+        $this->notificationSender = $notificationSender;
+    }
+
+    public function sendNotification(string $message): void {
+        // Altra logica di gestione delle notifiche
+
+        // Utilizzo dell'interfaccia NotificationSender invece di una implementazione specifica
+        $this->notificationSender->sendNotification($message);
+    }
+}
+
+// Utilizzo delle classi
+$emailNotificationSender = new EmailNotificationSender();
+$smsNotificationSender = new SMSNotificationSender();
+
+$emailNotificationService = new NotificationService($emailNotificationSender);
+$smsNotificationService = new NotificationService($smsNotificationSender);
+
+$emailNotificationService->sendNotification("Messaggio via e-mail");
+$smsNotificationService->sendNotification("Messaggio via SMS");

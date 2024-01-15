@@ -1,0 +1,20 @@
+// Interfaccia per definire la struttura di un Logger
+interface Logger {
+  slog(message: string): void;
+}
+
+// Classe che gestisce la logica di business
+class OrderProcessor {
+processOrder(order: any, logger: Logger): void {
+    // Logica di elaborazione dell'ordine
+
+    // Esempio di utilizzo del logger
+    logger.log(`Order processed: ${JSON.stringify(order)}`);
+  }
+}
+
+// Implementazione di un logger specifico
+class ConsoleLogger implements Logger {
+log(message: string): void {
+    console.log(message);
+}

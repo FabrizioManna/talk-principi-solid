@@ -1,0 +1,33 @@
+// Interfaccia per definire la struttura di un calcolatore di sconto
+interface DiscountCalculator {
+    public function calculateDiscount(float $price): float;
+}
+
+// Classe base per il calcolo del prezzo degli articoli
+class PriceCalculator {
+    private $discountCalculator;
+
+    public function __construct(DiscountCalculator $discountCalculator) {
+        $this->discountCalculator = $discountCalculator;
+    }
+
+    public function calculateFinalPrice(float $basePrice): float {
+        // Logica di calcolo del prezzo
+        $discountedPrice = $basePrice - $this->discountCalculator->calculateDiscount($basePrice);
+        return $discountedPrice;
+    }
+}
+
+// Implementazione di un calcolatore di sconto specifico (sconto del 10%)
+class TenPercentDiscount implements DiscountCalculator {
+    public function calculateDiscount(float $price): float {
+        return 0.1 * $price;
+    }
+}
+
+// Implementazione di un calcolatore di sconto specifico (sconto del 20%)
+class TwentyPercentDiscount implements DiscountCalculator {
+    public function calculateDiscount(float $price): float {
+        return 0.2 * $price;
+    }
+}

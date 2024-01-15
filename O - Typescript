@@ -1,0 +1,32 @@
+// Interfaccia per definire la struttura di un Servizio di Pagamento
+interface PaymentService {
+  processPayment(amount: number): void;
+}
+
+// Implementazione del servizio di pagamento con carta di credito
+class CreditCardPaymentService implements PaymentService {
+  processPayment(amount: number): void {
+    // Logica per elaborare il pagamento con carta di credito
+    console.log(`Processed credit card payment of $${amount}`);
+  }
+}
+
+// Implementazione del servizio di pagamento con PayPal
+class PayPalPaymentService implements PaymentService {
+  processPayment(amount: number): void {
+    // Logica per elaborare il pagamento con PayPal
+    console.log(`Processed PayPal payment of $${amount}`);
+  }
+}
+
+// Classe che utilizza il servizio di pagamento senza dover essere modificata
+class PaymentProcessor {
+  constructor(private paymentService: PaymentService) {}
+
+  performPayment(amount: number): void {
+    // Altre logiche di business...
+
+    // Utilizzo del servizio di pagamento
+    this.paymentService.processPayment(amount);
+  }
+}

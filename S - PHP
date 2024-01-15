@@ -1,0 +1,20 @@
+/ Classe che gestisce la registrazione degli utenti
+class UserRegistration {
+  public function registerUser($username, $email, $password): bool {
+    // Logica di registrazione dell'utente
+    // ...
+
+    // Restituisce true se la registrazione è avvenuta con successo
+    return true;
+  }
+}
+
+// Classe che gestisce la notifica dell'avvenuta registrazione
+class UserNotifier {
+  public function sendRegistrationNotification($email): void {
+    // Logica di notifica dell'utente
+    // ...
+
+    echo "Notification sent to $email\n";
+  }
+}
